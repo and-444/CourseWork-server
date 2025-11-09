@@ -1,0 +1,3 @@
+/home/andgood/Desktop/work (2 course)/ТиМП/course work/CourseWork-server/build/CMakeFiles/server.dir
+/home/andgood/Desktop/work (2 course)/ТиМП/course work/CourseWork-server/build/CMakeFiles/edit_cache.dir
+/home/andgood/Desktop/work (2 course)/ТиМП/course work/CourseWork-server/build/CMakeFiles/rebuild_cache.dir
