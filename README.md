@@ -8,6 +8,14 @@
 sudo apt update
 sudo apt install build-essential cmake libssl-dev
 ```
+## Сборка проекта
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
 
 ## Запуск сервера
 
