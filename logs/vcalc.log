@@ -4,3 +4,24 @@
 [2025-11-09 18:40:02] INFO: Loaded 4 users from ../data/vcalc.conf
 [2025-11-09 18:40:02] INFO: Server initialized successfully on port 33333
 [2025-11-09 18:40:02] INFO: Server started and listening on port 33333
+[2025-11-11 18:04:18] INFO: Loaded 4 users from ./data/vcalc.conf
+[2025-11-11 18:04:19] INFO: Server initialized successfully on port 33333
+[2025-11-11 18:04:19] INFO: Server started and listening on port 33333
+[2025-11-11 18:06:34] INFO: Loaded 4 users from ./data/vcalc.conf
+[2025-11-11 18:06:34] INFO: Server initialized successfully on port 33333
+[2025-11-11 18:06:34] INFO: Server started and listening on port 33333
+[2025-11-11 18:28:55] INFO: Loaded 4 users from ./data/vcalc.conf
+[2025-11-11 18:28:55] INFO: Server initialized successfully on port 33333
+[2025-11-11 18:28:55] INFO: Server started and listening on port 33333
+[2025-11-11 18:29:18] INFO: New connection from 127.0.0.1
+[2025-11-11 18:29:18] INFO: User 'user1' authenticated successfully
+[2025-11-11 18:29:19] INFO: New connection from 127.0.0.1
+[2025-11-11 18:29:19] INFO: User 'user2' authenticated successfully
+[2025-11-11 18:29:20] INFO: New connection from 127.0.0.1
+[2025-11-11 18:29:20] INFO: User 'test' authenticated successfully
+[2025-11-11 18:29:21] INFO: New connection from 127.0.0.1
+[2025-11-11 18:29:21] INFO: User 'admin' authenticated successfully
+[2025-11-11 18:29:22] INFO: New connection from 127.0.0.1
+[2025-11-11 18:29:22] INFO: Authentication failed: user 'invalid_user' not found
+[2025-11-11 18:29:22] INFO: New connection from 127.0.0.1
+[2025-11-11 18:29:22] INFO: User 'test' authenticated successfully
