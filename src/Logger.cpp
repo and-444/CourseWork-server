@@ -1,38 +1,48 @@
 #include "Logger.h"
 #include <iostream>
-#include <chrono>
 #include <iomanip>
+#include <sstream>
+#include <ctime>
 
 Logger& Logger::getInstance() {
     static Logger instance;
     return instance;
 }
 
-void Logger::initialize(const std::string& filename) {
-    std::lock_guard<std::mutex> lock(logMutex_);
-    logFile_.open(filename, std::ios::app);
-    initialized_ = logFile_.is_open();
+bool Logger::initialize(const std::string& filename) {
+    m_logFile.open(filename, std::ios::app);
+    if (!m_logFile.is_open()) {
+        std::cerr << "Ошибка: Не удалось открыть файл журнала: " << filename << std::endl;
+        return false;
+    }
+    
+    std::cout << "Файл журнала: " << filename << std::endl;
+    return true;
 }
 
-void Logger::log(const std::string& message, bool isError) {
-    std::lock_guard<std::mutex> lock(logMutex_);
+void Logger::log(LogLevel level, const std::string& message, const std::string& params) {
+    std::string levelStr = (level == LogLevel::INFO) ? "ИНФО" : "ОШИБКА";
+    std::string logEntry = getCurrentTime() + " [" + levelStr + "] " + message;
     
-    // Получение текущего времени
-    auto now = std::chrono::system_clock::now();
-    auto time_t = std::chrono::system_clock::to_time_t(now);
-    
-    std::stringstream ss;
-    ss << std::put_time(std::localtime(&time_t), "%Y-%m-%d %H:%M:%S");
-    
-    std::string logEntry = "[" + ss.str() + "] " + 
-                          (isError ? "ERROR: " : "INFO: ") + message;
+    if (!params.empty()) {
+        logEntry += " (" + params + ")";
+    }
     
     // Вывод в консоль
     std::cout << logEntry << std::endl;
     
     // Запись в файл
-    if (initialized_) {
-        logFile_ << logEntry << std::endl;
-        logFile_.flush();
+    if (m_logFile.is_open()) {
+        m_logFile << logEntry << std::endl;
+        m_logFile.flush();
     }
+}
+
+std::string Logger::getCurrentTime() {
+    auto now = std::time(nullptr);
+    auto tm = *std::localtime(&now);
+    
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
+    return oss.str();
 }

@@ -3,20 +3,23 @@
 
 #include <string>
 #include <fstream>
-#include <mutex>
+
+enum class LogLevel {
+    INFO,
+    ERROR
+};
 
 class Logger {
 public:
     static Logger& getInstance();
-    
-    void initialize(const std::string& filename);
-    void log(const std::string& message, bool isError = false);
+    bool initialize(const std::string& filename);
+    void log(LogLevel level, const std::string& message, const std::string& params = "");
     
 private:
     Logger() = default;
-    std::ofstream logFile_;
-    std::mutex logMutex_;
-    bool initialized_ = false;
+    std::string getCurrentTime();
+    
+    std::ofstream m_logFile;
 };
 
-#endif // LOGGER_H
+#endif

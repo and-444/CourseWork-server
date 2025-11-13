@@ -1,110 +1,119 @@
 #include "AuthManager.h"
+#include "SHA256.h"
 #include "Logger.h"
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-#include <openssl/evp.h>
-#include <cstring>
+#include <iostream>
+#include <cctype>
 
-AuthManager& AuthManager::getInstance() {
-    static AuthManager instance;
-    return instance;
-}
+// Конструктор
+AuthManager::AuthManager() : m_gen(m_rd()), m_dis(0, UINT64_MAX) {}
 
-bool AuthManager::loadUsers(const std::string& filename) {
+// Загрузка базы пользователей из файла
+bool AuthManager::loadUserDatabase(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        Logger::getInstance().log("ERROR: Cannot open user database file: " + filename, true);
+        std::cout << "Ошибка: Не удалось открыть файл базы: " << filename << std::endl;
         return false;
     }
     
-    users_.clear();
     std::string line;
+    int userCount = 0;
+    m_users.clear();
+    
+    std::cout << "Загрузка базы пользователей: " << filename << std::endl;
+    
     while (std::getline(file, line)) {
+        if (line.empty()) continue;
+        if (line[0] == '#') continue;
+        
         size_t pos = line.find(':');
         if (pos != std::string::npos) {
             std::string login = line.substr(0, pos);
             std::string password = line.substr(pos + 1);
-            users_[login] = password;
+            
+            // Убираем пробелы
+            login.erase(0, login.find_first_not_of(" \t"));
+            login.erase(login.find_last_not_of(" \t") + 1);
+            password.erase(0, password.find_first_not_of(" \t"));
+            password.erase(password.find_last_not_of(" \t") + 1);
+            
+            m_users[login] = password;
+            userCount++;
+            
+            std::cout << "Загружен пользователь: " << login << std::endl;
         }
     }
     
     file.close();
-    Logger::getInstance().log("Loaded " + std::to_string(users_.size()) + " users from " + filename);
+    
+    std::cout << "Загружено пользователей: " << userCount << std::endl;
+    
+    if (userCount == 0) {
+        std::cout << "Внимание: база пользователей пуста!" << std::endl;
+        return false;
+    }
+    
     return true;
 }
 
-bool AuthManager::userExists(const std::string& login) const {
-    return users_.find(login) != users_.end();
-}
-
+// Генерация соли
 std::string AuthManager::generateSalt() {
-    std::uniform_int_distribution<uint64_t> dis;
-    uint64_t saltValue = dis(gen_);
-    
+    uint64_t salt = m_dis(m_gen);
     std::stringstream ss;
-    ss << std::hex << std::setw(16) << std::setfill('0') << saltValue;
-    return ss.str();
+    ss << std::hex << std::setw(16) << std::setfill('0') << salt;
+    std::string saltStr = ss.str();
+    
+    // Приводим к верхнему регистру
+    for (char& c : saltStr) {
+        c = std::toupper(c);
+    }
+    
+    return saltStr;
 }
 
+// Аутентификация пользователя
+bool AuthManager::authenticate(const std::string& login, const std::string& salt, 
+                              const std::string& clientHash) {
+    // Ищем пользователя в базе
+    auto it = m_users.find(login);
+    if (it == m_users.end()) {
+        Logger::getInstance().log(LogLevel::ERROR, "Пользователь не найден", "логин: " + login);
+        return false;
+    }
+    
+    // Вычисляем хеш на сервере
+    std::string serverHash = computeHash(salt, it->second);
+    
+    // Приводим к верхнему регистру для сравнения
+    std::string clientHashUpper = clientHash;
+    for (char& c : clientHashUpper) {
+        c = std::toupper(c);
+    }
+    
+    // Сравниваем хеши
+    bool hashesMatch = (serverHash == clientHashUpper);
+    
+    if (!hashesMatch) {
+        Logger::getInstance().log(LogLevel::ERROR, "Ошибка аутентификации", 
+                                 "логин: " + login + ", хеши не совпадают");
+    } else {
+        Logger::getInstance().log(LogLevel::INFO, "Аутентификация успешна", "логин: " + login);
+    }
+    
+    return hashesMatch;
+}
+
+// Вычисление хеша SHA256
 std::string AuthManager::computeHash(const std::string& salt, const std::string& password) {
     std::string data = salt + password;
+    std::string hash = SHA256::hash(data);
     
-    EVP_MD_CTX* context = EVP_MD_CTX_new();
-    if (!context) {
-        throw std::runtime_error("Failed to create EVP context");
+    // Приводим к верхнему регистру
+    for (char& c : hash) {
+        c = std::toupper(c);
     }
     
-    // Используем SHA-256 через EVP API
-    if (EVP_DigestInit_ex(context, EVP_sha256(), nullptr) != 1) {
-        EVP_MD_CTX_free(context);
-        throw std::runtime_error("Failed to initialize SHA-256 digest");
-    }
-    
-    if (EVP_DigestUpdate(context, data.c_str(), data.length()) != 1) {
-        EVP_MD_CTX_free(context);
-        throw std::runtime_error("Failed to update SHA-256 digest");
-    }
-    
-    unsigned char hash[EVP_MAX_MD_SIZE];
-    unsigned int hashLength = 0;
-    if (EVP_DigestFinal_ex(context, hash, &hashLength) != 1) {
-        EVP_MD_CTX_free(context);
-        throw std::runtime_error("Failed to finalize SHA-256 digest");
-    }
-    
-    EVP_MD_CTX_free(context);
-    
-    // Проверяем, что получили именно SHA-256
-    if (hashLength != 32) {
-        throw std::runtime_error("Invalid SHA-256 hash length");
-    }
-    
-    std::stringstream ss;
-    for (unsigned int i = 0; i < hashLength; i++) {
-        ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(hash[i]);
-    }
-    
-    return ss.str();
-}
-
-bool AuthManager::verifyHash(const std::string& login, const std::string& salt, const std::string& receivedHash) {
-    auto it = users_.find(login);
-    if (it == users_.end()) {
-        return false;
-    }
-    
-    std::string computedHash = computeHash(salt, it->second);
-    
-    // Постоянное время сравнения для защиты от атак по времени
-    if (computedHash.length() != receivedHash.length()) {
-        return false;
-    }
-    
-    int result = 0;
-    for (size_t i = 0; i < computedHash.length(); i++) {
-        result |= computedHash[i] ^ receivedHash[i];
-    }
-    
-    return result == 0;
+    return hash;
 }

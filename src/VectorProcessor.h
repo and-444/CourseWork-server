@@ -1,17 +1,12 @@
 #ifndef VECTORPROCESSOR_H
 #define VECTORPROCESSOR_H
 
+#include <vector>
 #include <cstdint>
 
 class VectorProcessor {
 public:
-    VectorProcessor() = default;
-    void processVectors(int clientSocket);
-    
-private:
-    uint32_t computeProduct(const uint32_t* vector, uint32_t size);
-    bool receiveVector(int clientSocket, uint32_t*& vector, uint32_t& size);
-    void sendResults(int clientSocket, const uint32_t* results, uint32_t count);
+    static uint32_t computeProduct(const std::vector<uint32_t>& vector);
 };
 
-#endif // VECTORPROCESSOR_H
+#endif

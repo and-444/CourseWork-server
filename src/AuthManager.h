@@ -7,20 +7,24 @@
 
 class AuthManager {
 public:
-    static AuthManager& getInstance();
+    AuthManager();
     
-    bool loadUsers(const std::string& filename);
-    bool userExists(const std::string& login) const;
+    // Основные методы
+    bool loadUserDatabase(const std::string& filename);
     std::string generateSalt();
-    bool verifyHash(const std::string& login, const std::string& salt, const std::string& receivedHash);
+    bool authenticate(const std::string& login, const std::string& salt, 
+                     const std::string& clientHash);
+    
+    // Тестовые методы
+    void testHashComputation();
     
 private:
-    AuthManager() = default;
-    std::unordered_map<std::string, std::string> users_;
-    std::random_device rd_;
-    std::mt19937_64 gen_;
+    std::unordered_map<std::string, std::string> m_users;
+    std::random_device m_rd;
+    std::mt19937 m_gen;
+    std::uniform_int_distribution<uint64_t> m_dis;
     
     std::string computeHash(const std::string& salt, const std::string& password);
 };
 
-#endif // AUTHMANAGER_H
+#endif

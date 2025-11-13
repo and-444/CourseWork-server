@@ -1,9 +1,3 @@
-# Build directories
-build/
-bin/
-*.o
-*.a
-
 # Log files
 logs/*.log
 *.log
@@ -13,11 +7,3 @@ logs/*.log
 .idea/
 *.swp
 *.swo
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
