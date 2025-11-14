@@ -8,6 +8,7 @@
 #include <cstring>
 #include <iostream>
 #include <thread>
+#include <fstream>
 
 // Конструктор сервера
 Server::Server() : m_serverSocket(-1), m_port(0), m_running(false), m_userDbFile("") {}
@@ -16,6 +17,15 @@ Server::Server() : m_serverSocket(-1), m_port(0), m_running(false), m_userDbFile
 bool Server::initialize(const std::string& userDbFile, const std::string& logFile, uint16_t port) {
     m_port = port;
     m_userDbFile = userDbFile;
+    
+    // Проверка существования файла базы пользователей
+    std::ifstream testFile(userDbFile);
+    if (!testFile.is_open()) {
+        Logger::getInstance().log(LogLevel::ERROR, "Файл базы пользователей не существует", 
+                                 "файл: " + userDbFile);
+        return false;
+    }
+    testFile.close();
     
     // Инициализация логгера
     if (!Logger::getInstance().initialize(logFile)) {
