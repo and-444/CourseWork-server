@@ -1,55 +1,51 @@
-# Network Server
+# Сетевой сервер для обработки векторов
 
-Серверная программа для клиент-серверной системы обработки данных с аутентификацией.
+## Описание
+Серверное приложение для аутентификации клиентов и вычисления произведения элементов векторов. Сервер ведет журнал работы и обрабатывает переполнение при вычислениях.
+
+## Требования
+ОС: Linux (Ubuntu/Debian)  
+Компилятор: g++ с поддержкой C++17  
+Библиотеки: OpenSSL  
 
 ## Установка зависимостей
-
+Установка OpenSSL
 ```bash
 sudo apt update
-sudo apt install build-essential cmake libssl-dev
+sudo apt install libssl-dev
 ```
-## Сборка проекта
-
+Установка компилятора
 ```bash
-mkdir build
-cd build
-cmake ..
+sudo apt install build-essential
+```
+
+## Сборка проекта
+Сборка сервера
+```bash
+make clean
 make
 ```
 
 ## Запуск сервера
-
 ```bash
-# Через скрипт запуска из корневой папки проекта
-chmod +x start_server.sh
-./start_server.sh
+# Запуск с параметрами по умолчанию
+./server
 
-## Прямой запуск из корневой папки
-./build/server --config ./data/vcalc.conf --log ./logs/vcalc.log --port 33333
+# Запуск с параметрами
+./server -c vcalc.conf  -l vcalc.log
 
-## Прямой запуск из папки build
-cd build
-./server --config ../data/vcalc.conf --log ../logs/vcalc.log --port 33333
+# Показать справку
+./server -h
 ```
 
 ## Параметры командной строки
-
 -c, --config FILE - файл базы пользователей (по умолчанию: /etc/vcalc.conf)  
 -l, --log FILE - файл журнала (по умолчанию: /var/log/vcalc.log)  
 -p, --port PORT - порт сервера (по умолчанию: 33333)  
 -h, --help - справка
 
-## Скрипт тестового клиента
-
+## Тестирование с клиентом
+Запуск тестового клиента
 ```bash
-# Тестовый клиент для сервера
-# Автоматически тестирует аутентификацию и вычисления
-
-# Запускаем Python тестовый клиент из папки tests
-chmod +x tests/test_server.py
-python3 tests/test_server.py
-
-# Запускаем Python тестовый клиент скрипт из корневой папки проекта
-chmod +x test_client.sh
-./test_client.sh
+./client_uint32_t -H SHA256 -S s
 ```
