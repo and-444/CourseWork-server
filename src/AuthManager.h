@@ -15,16 +15,14 @@ public:
     bool authenticate(const std::string& login, const std::string& salt, 
                      const std::string& clientHash);
     
-    // Тестовые методы
-    void testHashComputation();
+    // Тестовые методы - делаем публичным для тестирования
+    std::string computeHash(const std::string& salt, const std::string& password);
     
 private:
     std::unordered_map<std::string, std::string> m_users;
     std::random_device m_rd;
     std::mt19937 m_gen;
     std::uniform_int_distribution<uint64_t> m_dis;
-    
-    std::string computeHash(const std::string& salt, const std::string& password);
 };
 
 #endif

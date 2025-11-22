@@ -29,7 +29,7 @@ bool AuthManager::loadUserDatabase(const std::string& filename) {
         if (line[0] == '#') continue;
         
         size_t pos = line.find(':');
-        if (pos != std::string::npos) {
+        if (pos != std::string::npos && pos > 0) { // Добавляем проверку pos > 0
             std::string login = line.substr(0, pos);
             std::string password = line.substr(pos + 1);
             
@@ -39,10 +39,13 @@ bool AuthManager::loadUserDatabase(const std::string& filename) {
             password.erase(0, password.find_first_not_of(" \t"));
             password.erase(password.find_last_not_of(" \t") + 1);
             
-            m_users[login] = password;
-            userCount++;
-            
-            std::cout << "Загружен пользователь: " << login << std::endl;
+            // Проверяем что логин не пустой
+            if (!login.empty() && !password.empty()) {
+                m_users[login] = password;
+                userCount++;
+                
+                std::cout << "Загружен пользователь: " << login << std::endl;
+            }
         }
     }
     
