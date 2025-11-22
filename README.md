@@ -49,3 +49,15 @@ make
 ```bash
 ./client_uint32_t -H SHA256 -S s
 ```
+
+## Модульное тестирование 
+Убедитесь, что установлена библиотека UnitTest++
+```bash
+sudo apt install libunittest++-dev
+```
+
+Запуск тестов
+```bash
+make clean
+make test
+```
