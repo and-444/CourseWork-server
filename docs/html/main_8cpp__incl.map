@@ -1,0 +1,22 @@
+<map id="src/main.cpp" name="src/main.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="169,5,274,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,85,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,33,88,76,86,71,192,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="192,152,251,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,31,224,138,219,138,219,31"/>
+<area shape="rect" id="Node000004" href="$Server_8h.html" title="Основной класс сервера" alt="" coords="109,79,184,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,33,171,71,167,67,208,29"/>
+<area shape="rect" id="Node000006" href="$Logger_8h.html" title=" " alt="" coords="259,79,336,104"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="235,29,277,67,273,71,232,33"/>
+<area shape="rect" id="Node000008" href="$Interface_8h.html" title="Интерфейс командной строки с использованием Boost.Program_options." alt="" coords="361,79,453,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="252,28,365,71,363,76,250,33"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="160,102,201,141,197,144,157,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="101,152,168,177"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="147,105,142,139,136,138,142,104"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="287,106,246,144,242,141,283,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="275,152,349,177"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="302,104,309,138,304,139,297,105"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="378,107,265,150,263,145,376,102"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="372,152,572,177"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="419,103,454,140,450,144,415,106"/>
+</map>

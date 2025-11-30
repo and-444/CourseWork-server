@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Network Server: Исходный файл src/Interface.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Network Server<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Серверная программа для клиент-серверной системы обработки данных с аутентификацией</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Interface.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Interface_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;boost/program_options.hpp&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span>po = boost::program_options;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structParams.html">   14</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structParams.html">Params</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structParams.html#a6f4d509e8e2f912cf54499c614fc521c">   15</a></span>    std::string <a class="code hl_variable" href="structParams.html#a6f4d509e8e2f912cf54499c614fc521c">dbFile</a>; <span class="comment">// путь к файлу базы данных</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structParams.html#a0df9a020ab892dd684833c2ec4c2f41c">   16</a></span>    std::string <a class="code hl_variable" href="structParams.html#a0df9a020ab892dd684833c2ec4c2f41c">logFile</a>; <span class="comment">// путь к файлу журнала</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structParams.html#afe8ac84d583f6b4809d2e88ba6c00b21">   17</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="structParams.html#afe8ac84d583f6b4809d2e88ba6c00b21">port</a>; <span class="comment">// порт</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classInterface.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="classInterface.html">Interface</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classInterface.html#a795825f7ff6cb8cad3972af64a1d2ffc">   30</a></span>    po::options_description <a class="code hl_variable" href="classInterface.html#a795825f7ff6cb8cad3972af64a1d2ffc">desc</a>; </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classInterface.html#a6111e9544f9be79f4cf0fa4500e6d4ac">   31</a></span>    po::variables_map <a class="code hl_variable" href="classInterface.html#a6111e9544f9be79f4cf0fa4500e6d4ac">vm</a>;         </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classInterface.html#a98f3efba14c789b06833cf26c629f7fb">   32</a></span>    <a class="code hl_struct" href="structParams.html">Params</a> <a class="code hl_variable" href="classInterface.html#a98f3efba14c789b06833cf26c629f7fb">params</a>;                </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_function" href="classInterface.html#a4406d74c75bdfe150bf72be1f1cda8b1">Interface</a>(); <span class="comment">// конструктор</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classInterface.html#a576d8f0f090764a4bacb2fe60db69743">parse</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classInterface.html#a1108830b84b28acadc167e128abd2ec1">   50</a></span>    <a class="code hl_struct" href="structParams.html">Params</a> <a class="code hl_function" href="classInterface.html#a1108830b84b28acadc167e128abd2ec1">getParams</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classInterface.html#a98f3efba14c789b06833cf26c629f7fb">params</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classInterface.html#a4887efaf3962df462f13a900143ad10f">printHelp</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
+</div>
+<div class="ttc" id="aclassInterface_html"><div class="ttname"><a href="classInterface.html">Interface</a></div><div class="ttdoc">Парсер аргументов командной строки</div><div class="ttdef"><b>Definition</b> Interface.h:28</div></div>
+<div class="ttc" id="aclassInterface_html_a1108830b84b28acadc167e128abd2ec1"><div class="ttname"><a href="classInterface.html#a1108830b84b28acadc167e128abd2ec1">Interface::getParams</a></div><div class="ttdeci">Params getParams() const</div><div class="ttdoc">Получение параметров приложения</div><div class="ttdef"><b>Definition</b> Interface.h:50</div></div>
+<div class="ttc" id="aclassInterface_html_a4406d74c75bdfe150bf72be1f1cda8b1"><div class="ttname"><a href="classInterface.html#a4406d74c75bdfe150bf72be1f1cda8b1">Interface::Interface</a></div><div class="ttdeci">Interface()</div><div class="ttdef"><b>Definition</b> Interface.cpp:5</div></div>
+<div class="ttc" id="aclassInterface_html_a4887efaf3962df462f13a900143ad10f"><div class="ttname"><a href="classInterface.html#a4887efaf3962df462f13a900143ad10f">Interface::printHelp</a></div><div class="ttdeci">void printHelp() const</div><div class="ttdoc">Вывод справки по использованию</div><div class="ttdef"><b>Definition</b> Interface.cpp:27</div></div>
+<div class="ttc" id="aclassInterface_html_a576d8f0f090764a4bacb2fe60db69743"><div class="ttname"><a href="classInterface.html#a576d8f0f090764a4bacb2fe60db69743">Interface::parse</a></div><div class="ttdeci">bool parse(int argc, char **argv)</div><div class="ttdoc">Парсинг аргументов командной строки</div><div class="ttdef"><b>Definition</b> Interface.cpp:13</div></div>
+<div class="ttc" id="aclassInterface_html_a6111e9544f9be79f4cf0fa4500e6d4ac"><div class="ttname"><a href="classInterface.html#a6111e9544f9be79f4cf0fa4500e6d4ac">Interface::vm</a></div><div class="ttdeci">po::variables_map vm</div><div class="ttdoc">Результаты парсинга аргументов</div><div class="ttdef"><b>Definition</b> Interface.h:31</div></div>
+<div class="ttc" id="aclassInterface_html_a795825f7ff6cb8cad3972af64a1d2ffc"><div class="ttname"><a href="classInterface.html#a795825f7ff6cb8cad3972af64a1d2ffc">Interface::desc</a></div><div class="ttdeci">po::options_description desc</div><div class="ttdoc">Описание опций командной строки</div><div class="ttdef"><b>Definition</b> Interface.h:30</div></div>
+<div class="ttc" id="aclassInterface_html_a98f3efba14c789b06833cf26c629f7fb"><div class="ttname"><a href="classInterface.html#a98f3efba14c789b06833cf26c629f7fb">Interface::params</a></div><div class="ttdeci">Params params</div><div class="ttdoc">Параметры приложения</div><div class="ttdef"><b>Definition</b> Interface.h:32</div></div>
+<div class="ttc" id="astructParams_html"><div class="ttname"><a href="structParams.html">Params</a></div><div class="ttdef"><b>Definition</b> Interface.h:14</div></div>
+<div class="ttc" id="astructParams_html_a0df9a020ab892dd684833c2ec4c2f41c"><div class="ttname"><a href="structParams.html#a0df9a020ab892dd684833c2ec4c2f41c">Params::logFile</a></div><div class="ttdeci">std::string logFile</div><div class="ttdef"><b>Definition</b> Interface.h:16</div></div>
+<div class="ttc" id="astructParams_html_a6f4d509e8e2f912cf54499c614fc521c"><div class="ttname"><a href="structParams.html#a6f4d509e8e2f912cf54499c614fc521c">Params::dbFile</a></div><div class="ttdeci">std::string dbFile</div><div class="ttdef"><b>Definition</b> Interface.h:15</div></div>
+<div class="ttc" id="astructParams_html_afe8ac84d583f6b4809d2e88ba6c00b21"><div class="ttname"><a href="structParams.html#afe8ac84d583f6b4809d2e88ba6c00b21">Params::port</a></div><div class="ttdeci">unsigned short port</div><div class="ttdef"><b>Definition</b> Interface.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по Network Server. Последние изменения: Вс 30 Ноя 2025 18:12:55. Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

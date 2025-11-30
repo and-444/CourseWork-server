@@ -9,7 +9,17 @@ TARGET = server
 TEST_TARGET = test_runner
 
 # Используем wildcard для автоматического поиска всех тестовых файлов
-TEST_SOURCES = $(wildcard $(TESTDIR)/test_*.cpp)
+TEST_SOURCES = $(wildcard $(TESTDIR)/test_*.cpp \  $(TESTDIR)/acceptance_test.cpp )
+
+# Цель для генерации документации
+doxygen:
+	doxygen Doxyfile
+	cd docs/latex && make
+	cp docs/latex/refman.pdf NetworkServer_Documentation.pdf
+
+pdf: doxygen
+
+.PHONY: doxygen pdf
 
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Network Server: Файл src/AuthManager.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Network Server<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Серверная программа для клиент-серверной системы обработки данных с аутентификацией</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Файл AuthManager.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="AuthManager_8h_source.html">AuthManager.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SHA256_8h_source.html">SHA256.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Logger_8h_source.html">Logger.h</a>&quot;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;cctype&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для AuthManager.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="AuthManager_8cpp__incl.png" border="0" usemap="#asrc_2AuthManager_8cpp" alt=""/></div>
+<map name="asrc_2AuthManager_8cpp" id="asrc_2AuthManager_8cpp">
+<area shape="rect" title=" " alt="" coords="437,5,596,31"/>
+<area shape="rect" href="AuthManager_8h.html" title="Менеджер аутентификации пользователей" alt="" coords="111,79,231,104"/>
+<area shape="poly" title=" " alt="" coords="462,33,241,78,240,73,461,28"/>
+<area shape="rect" href="SHA256_8h.html" title=" " alt="" coords="255,79,341,104"/>
+<area shape="poly" title=" " alt="" coords="482,33,347,77,346,72,481,28"/>
+<area shape="rect" href="Logger_8h.html" title=" " alt="" coords="365,79,442,104"/>
+<area shape="poly" title=" " alt="" coords="500,33,435,74,432,69,497,28"/>
+<area shape="rect" title=" " alt="" coords="404,152,477,177"/>
+<area shape="poly" title=" " alt="" coords="513,32,455,141,451,139,508,30"/>
+<area shape="rect" title=" " alt="" coords="517,79,591,104"/>
+<area shape="poly" title=" " alt="" coords="525,30,544,65,539,68,520,32"/>
+<area shape="rect" title=" " alt="" coords="615,79,690,104"/>
+<area shape="poly" title=" " alt="" coords="540,28,620,70,617,75,537,33"/>
+<area shape="rect" title=" " alt="" coords="714,79,794,104"/>
+<area shape="poly" title=" " alt="" coords="556,28,703,72,702,77,554,33"/>
+<area shape="rect" title=" " alt="" coords="819,79,884,104"/>
+<area shape="poly" title=" " alt="" coords="577,28,805,76,804,81,576,33"/>
+<area shape="rect" title=" " alt="" coords="269,152,327,177"/>
+<area shape="poly" title=" " alt="" coords="193,102,267,143,264,147,190,106"/>
+<area shape="rect" title=" " alt="" coords="5,152,129,177"/>
+<area shape="poly" title=" " alt="" coords="156,106,97,146,94,142,153,102"/>
+<area shape="rect" title=" " alt="" coords="154,152,226,177"/>
+<area shape="poly" title=" " alt="" coords="177,104,186,138,181,140,172,105"/>
+<area shape="poly" title=" " alt="" coords="301,104,301,138,295,138,295,104"/>
+<area shape="poly" title=" " alt="" coords="388,106,328,147,325,142,385,102"/>
+<area shape="poly" title=" " alt="" coords="412,103,431,139,426,141,407,106"/>
+</map>
+</div>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по Network Server. Последние изменения: Вс 30 Ноя 2025 18:12:55. Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

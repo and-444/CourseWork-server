@@ -1,0 +1,53 @@
+\doxysection{Класс Vector\+Processor}
+\hypertarget{classVectorProcessor}{}\label{classVectorProcessor}\index{VectorProcessor@{VectorProcessor}}
+
+
+Вычисление произведения элементов вектора  
+
+
+
+
+{\ttfamily \#include $<$Vector\+Processor.\+h$>$}
+
+\doxysubsubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{classVectorProcessor_a899703db41f8dfe6ed816bdf658f211d}{compute\+Product}} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vector)
+\begin{DoxyCompactList}\small\item\em Вычисление произведения элементов вектора \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Вычисление произведения элементов вектора 
+
+Класс предоставляет статический метод для вычисления произведения всех элементов вектора с обработкой переполнения. 
+
+\doxysubsection{Методы}
+\Hypertarget{classVectorProcessor_a899703db41f8dfe6ed816bdf658f211d}\label{classVectorProcessor_a899703db41f8dfe6ed816bdf658f211d} 
+\index{VectorProcessor@{VectorProcessor}!computeProduct@{computeProduct}}
+\index{computeProduct@{computeProduct}!VectorProcessor@{VectorProcessor}}
+\doxysubsubsection{\texorpdfstring{computeProduct()}{computeProduct()}}
+{\footnotesize\ttfamily uint32\+\_\+t Vector\+Processor\+::compute\+Product (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Вычисление произведения элементов вектора 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em vector} & Входной вектор целых чисел \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Произведение всех элементов вектора
+\end{DoxyReturn}
+\begin{DoxyNote}{Заметки}
+При переполнении возвращает MAX\+\_\+\+UINT32 
+
+Для пустого вектора возвращает 0 
+\end{DoxyNote}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{VectorProcessor_8h}{Vector\+Processor.\+h}}\item 
+src/\mbox{\hyperlink{VectorProcessor_8cpp}{Vector\+Processor.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,174 @@
+\doxysection{Класс Auth\+Manager}
+\hypertarget{classAuthManager}{}\label{classAuthManager}\index{AuthManager@{AuthManager}}
+
+
+Управление аутентификацией пользователей  
+
+
+
+
+{\ttfamily \#include $<$Auth\+Manager.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAuthManager_ac2bb200e13f45bee1f9adc689d33a2b1}{Auth\+Manager}} ()
+\item 
+bool \mbox{\hyperlink{classAuthManager_acf6d31be99f4008906f1414d9c5a2ed9}{load\+User\+Database}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Загрузка базы пользователей из файла \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classAuthManager_a6bf14f0993a741b3f3c7c1da298cddaf}{generate\+Salt}} ()
+\begin{DoxyCompactList}\small\item\em Генерация случайной соли \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAuthManager_ad2176ea491c2c926420ba0d6671f7a34}{authenticate}} (const std\+::string \&login, const std\+::string \&salt, const std\+::string \&client\+Hash)
+\begin{DoxyCompactList}\small\item\em Аутентификация пользователя \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classAuthManager_a947b6046a47f67804e2a0114103bb0c7}{compute\+Hash}} (const std\+::string \&salt, const std\+::string \&password)
+\begin{DoxyCompactList}\small\item\em Вычисление хеша \doxylink{classSHA256}{SHA256}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classAuthManager_a730a257c42382298cdcc700dc292ff6d}{m\+\_\+users}}
+\begin{DoxyCompactList}\small\item\em Хранилище пользователей \end{DoxyCompactList}\item 
+std\+::random\+\_\+device \mbox{\hyperlink{classAuthManager_a262ced4d7336dc2dfd80619b320410d5}{m\+\_\+rd}}
+\begin{DoxyCompactList}\small\item\em Генератор случайных чисел \end{DoxyCompactList}\item 
+std\+::mt19937 \mbox{\hyperlink{classAuthManager_ab8db99e0f1886c5064577e9193a31089}{m\+\_\+gen}}
+\begin{DoxyCompactList}\small\item\em Mersenne Twister генератор \end{DoxyCompactList}\item 
+std\+::uniform\+\_\+int\+\_\+distribution$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classAuthManager_a5d73c7a1c69615bec6b15c258117757d}{m\+\_\+dis}}
+\begin{DoxyCompactList}\small\item\em Распределение для соли \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Управление аутентификацией пользователей 
+
+Класс отвечает за загрузку базы пользователей, генерацию соли, вычисление хешей и проверку подлинности пользователей. 
+
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{classAuthManager_ac2bb200e13f45bee1f9adc689d33a2b1}\label{classAuthManager_ac2bb200e13f45bee1f9adc689d33a2b1} 
+\index{AuthManager@{AuthManager}!AuthManager@{AuthManager}}
+\index{AuthManager@{AuthManager}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{AuthManager()}{AuthManager()}}
+{\footnotesize\ttfamily Auth\+Manager\+::\+Auth\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Методы}
+\Hypertarget{classAuthManager_ad2176ea491c2c926420ba0d6671f7a34}\label{classAuthManager_ad2176ea491c2c926420ba0d6671f7a34} 
+\index{AuthManager@{AuthManager}!authenticate@{authenticate}}
+\index{authenticate@{authenticate}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{authenticate()}{authenticate()}}
+{\footnotesize\ttfamily bool Auth\+Manager\+::authenticate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login,  }\item[{const std\+::string \&}]{salt,  }\item[{const std\+::string \&}]{client\+Hash }\end{DoxyParamCaption})}
+
+
+
+Аутентификация пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+{\em salt} & Соль для хеширования \\
+\hline
+{\em client\+Hash} & Хеш от клиента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если аутентификация успешна 
+\end{DoxyReturn}
+\Hypertarget{classAuthManager_a947b6046a47f67804e2a0114103bb0c7}\label{classAuthManager_a947b6046a47f67804e2a0114103bb0c7} 
+\index{AuthManager@{AuthManager}!computeHash@{computeHash}}
+\index{computeHash@{computeHash}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{computeHash()}{computeHash()}}
+{\footnotesize\ttfamily std\+::string Auth\+Manager\+::compute\+Hash (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{salt,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})}
+
+
+
+Вычисление хеша \doxylink{classSHA256}{SHA256}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em salt} & Соль для хеширования \\
+\hline
+{\em password} & Пароль пользователя \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+64-\/символьный hex хеш в верхнем регистре 
+\end{DoxyReturn}
+\Hypertarget{classAuthManager_a6bf14f0993a741b3f3c7c1da298cddaf}\label{classAuthManager_a6bf14f0993a741b3f3c7c1da298cddaf} 
+\index{AuthManager@{AuthManager}!generateSalt@{generateSalt}}
+\index{generateSalt@{generateSalt}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{generateSalt()}{generateSalt()}}
+{\footnotesize\ttfamily std\+::string Auth\+Manager\+::generate\+Salt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Генерация случайной соли 
+
+\begin{DoxyReturn}{Возвращает}
+16-\/символьная hex строка соли 
+\end{DoxyReturn}
+\Hypertarget{classAuthManager_acf6d31be99f4008906f1414d9c5a2ed9}\label{classAuthManager_acf6d31be99f4008906f1414d9c5a2ed9} 
+\index{AuthManager@{AuthManager}!loadUserDatabase@{loadUserDatabase}}
+\index{loadUserDatabase@{loadUserDatabase}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{loadUserDatabase()}{loadUserDatabase()}}
+{\footnotesize\ttfamily bool Auth\+Manager\+::load\+User\+Database (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Загрузка базы пользователей из файла 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Путь к файлу базы пользователей \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если загрузка успешна, false в случае ошибки 
+\end{DoxyReturn}
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{classAuthManager_a5d73c7a1c69615bec6b15c258117757d}\label{classAuthManager_a5d73c7a1c69615bec6b15c258117757d} 
+\index{AuthManager@{AuthManager}!m\_dis@{m\_dis}}
+\index{m\_dis@{m\_dis}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{m\_dis}{m\_dis}}
+{\footnotesize\ttfamily std\+::uniform\+\_\+int\+\_\+distribution$<$uint64\+\_\+t$>$ Auth\+Manager\+::m\+\_\+dis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Распределение для соли 
+
+\Hypertarget{classAuthManager_ab8db99e0f1886c5064577e9193a31089}\label{classAuthManager_ab8db99e0f1886c5064577e9193a31089} 
+\index{AuthManager@{AuthManager}!m\_gen@{m\_gen}}
+\index{m\_gen@{m\_gen}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{m\_gen}{m\_gen}}
+{\footnotesize\ttfamily std\+::mt19937 Auth\+Manager\+::m\+\_\+gen\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mersenne Twister генератор 
+
+\Hypertarget{classAuthManager_a262ced4d7336dc2dfd80619b320410d5}\label{classAuthManager_a262ced4d7336dc2dfd80619b320410d5} 
+\index{AuthManager@{AuthManager}!m\_rd@{m\_rd}}
+\index{m\_rd@{m\_rd}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{m\_rd}{m\_rd}}
+{\footnotesize\ttfamily std\+::random\+\_\+device Auth\+Manager\+::m\+\_\+rd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Генератор случайных чисел 
+
+\Hypertarget{classAuthManager_a730a257c42382298cdcc700dc292ff6d}\label{classAuthManager_a730a257c42382298cdcc700dc292ff6d} 
+\index{AuthManager@{AuthManager}!m\_users@{m\_users}}
+\index{m\_users@{m\_users}!AuthManager@{AuthManager}}
+\doxysubsubsection{\texorpdfstring{m\_users}{m\_users}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::string$>$ Auth\+Manager\+::m\+\_\+users\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хранилище пользователей 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{AuthManager_8h}{Auth\+Manager.\+h}}\item 
+src/\mbox{\hyperlink{AuthManager_8cpp}{Auth\+Manager.\+cpp}}\end{DoxyCompactItemize}

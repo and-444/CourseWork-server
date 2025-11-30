@@ -1,0 +1,37 @@
+\doxysection{Interface.\+h}
+\hypertarget{Interface_8h_source}{}\label{Interface_8h_source}\index{src/Interface.h@{src/Interface.h}}
+\mbox{\hyperlink{Interface_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <boost/program\_options.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }po\ =\ boost::program\_options;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structParams}{Params}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ std::string\ \mbox{\hyperlink{structParams_a6f4d509e8e2f912cf54499c614fc521c}{dbFile}};\ \textcolor{comment}{//\ путь\ к\ файлу\ базы\ данных}}
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ \mbox{\hyperlink{structParams_a0df9a020ab892dd684833c2ec4c2f41c}{logFile}};\ \textcolor{comment}{//\ путь\ к\ файлу\ журнала}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}};\ \textcolor{comment}{//\ порт}}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInterface}{Interface}}\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ po::options\_description\ \mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{desc}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ po::variables\_map\ \mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{vm}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{structParams}{Params}}\ \mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface}}();\ \textcolor{comment}{//\ конструктор}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classInterface_a576d8f0f090764a4bacb2fe60db69743}{parse}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argv);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{structParams}{Params}}\ \mbox{\hyperlink{classInterface_a1108830b84b28acadc167e128abd2ec1}{getParams}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}};}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{printHelp}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \};}
+
+\end{DoxyCode}

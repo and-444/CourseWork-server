@@ -1,0 +1,206 @@
+\begin{theindex}
+
+  \item {\texorpdfstring{$\sim$}{\string~}Logger}
+    \subitem {Logger}, \hyperpage{11}
+
+  \indexspace
+
+  \item {authenticate}
+    \subitem {AuthManager}, \hyperpage{6}
+  \item {authenticateClient}
+    \subitem {Server}, \hyperpage{14}
+  \item {AuthManager}, \hyperpage{5}
+    \subitem {authenticate}, \hyperpage{6}
+    \subitem {AuthManager}, \hyperpage{6}
+    \subitem {computeHash}, \hyperpage{6}
+    \subitem {generateSalt}, \hyperpage{6}
+    \subitem {loadUserDatabase}, \hyperpage{7}
+    \subitem {m\_dis}, \hyperpage{7}
+    \subitem {m\_gen}, \hyperpage{7}
+    \subitem {m\_rd}, \hyperpage{7}
+    \subitem {m\_users}, \hyperpage{7}
+
+  \indexspace
+
+  \item {bindSocket}
+    \subitem {Server}, \hyperpage{14}
+
+  \indexspace
+
+  \item {computeHash}
+    \subitem {AuthManager}, \hyperpage{6}
+  \item {computeProduct}
+    \subitem {VectorProcessor}, \hyperpage{16}
+  \item {createSocket}
+    \subitem {Server}, \hyperpage{14}
+
+  \indexspace
+
+  \item {dbFile}
+    \subitem {Params}, \hyperpage{12}
+  \item {desc}
+    \subitem {Interface}, \hyperpage{10}
+
+  \indexspace
+
+  \item {ERROR}
+    \subitem {Logger.h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {generateSalt}
+    \subitem {AuthManager}, \hyperpage{6}
+  \item {getCurrentTime}
+    \subitem {Logger}, \hyperpage{11}
+  \item {getInstance}
+    \subitem {Logger}, \hyperpage{11}
+  \item {getParams}
+    \subitem {Interface}, \hyperpage{9}
+
+  \indexspace
+
+  \item {handleClient}
+    \subitem {Server}, \hyperpage{14}
+  \item {hash}
+    \subitem {SHA256}, \hyperpage{16}
+
+  \indexspace
+
+  \item {INFO}
+    \subitem {Logger.h}, \hyperpage{24}
+  \item {initialize}
+    \subitem {Logger}, \hyperpage{11}
+    \subitem {Server}, \hyperpage{14}
+  \item {Interface}, \hyperpage{8}
+    \subitem {desc}, \hyperpage{10}
+    \subitem {getParams}, \hyperpage{9}
+    \subitem {Interface}, \hyperpage{9}
+    \subitem {params}, \hyperpage{10}
+    \subitem {parse}, \hyperpage{9}
+    \subitem {printHelp}, \hyperpage{9}
+    \subitem {vm}, \hyperpage{10}
+
+  \indexspace
+
+  \item {loadUserDatabase}
+    \subitem {AuthManager}, \hyperpage{7}
+  \item {log}
+    \subitem {Logger}, \hyperpage{11}
+  \item {logFile}
+    \subitem {Params}, \hyperpage{12}
+  \item {Logger}, \hyperpage{10}
+    \subitem {\texorpdfstring{$\sim$}{\string~}Logger}, \hyperpage{11}
+    \subitem {getCurrentTime}, \hyperpage{11}
+    \subitem {getInstance}, \hyperpage{11}
+    \subitem {initialize}, \hyperpage{11}
+    \subitem {log}, \hyperpage{11}
+    \subitem {Logger}, \hyperpage{11}
+    \subitem {m\_filename}, \hyperpage{12}
+    \subitem {m\_initialized}, \hyperpage{12}
+    \subitem {m\_logFile}, \hyperpage{12}
+    \subitem {reset}, \hyperpage{11}
+  \item {Logger.h}
+    \subitem {ERROR}, \hyperpage{24}
+    \subitem {INFO}, \hyperpage{24}
+    \subitem {LogLevel}, \hyperpage{24}
+  \item {LogLevel}
+    \subitem {Logger.h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {m\_dis}
+    \subitem {AuthManager}, \hyperpage{7}
+  \item {m\_filename}
+    \subitem {Logger}, \hyperpage{12}
+  \item {m\_gen}
+    \subitem {AuthManager}, \hyperpage{7}
+  \item {m\_initialized}
+    \subitem {Logger}, \hyperpage{12}
+  \item {m\_logFile}
+    \subitem {Logger}, \hyperpage{12}
+  \item {m\_port}
+    \subitem {Server}, \hyperpage{15}
+  \item {m\_rd}
+    \subitem {AuthManager}, \hyperpage{7}
+  \item {m\_running}
+    \subitem {Server}, \hyperpage{15}
+  \item {m\_serverSocket}
+    \subitem {Server}, \hyperpage{15}
+  \item {m\_userDbFile}
+    \subitem {Server}, \hyperpage{15}
+  \item {m\_users}
+    \subitem {AuthManager}, \hyperpage{7}
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{26}
+  \item {main.cpp}
+    \subitem {main}, \hyperpage{26}
+
+  \indexspace
+
+  \item {Params}, \hyperpage{12}
+    \subitem {dbFile}, \hyperpage{12}
+    \subitem {logFile}, \hyperpage{12}
+    \subitem {port}, \hyperpage{12}
+  \item {params}
+    \subitem {Interface}, \hyperpage{10}
+  \item {parse}
+    \subitem {Interface}, \hyperpage{9}
+  \item {port}
+    \subitem {Params}, \hyperpage{12}
+  \item {printHelp}
+    \subitem {Interface}, \hyperpage{9}
+  \item {processVectors}
+    \subitem {Server}, \hyperpage{14}
+
+  \indexspace
+
+  \item {reset}
+    \subitem {Logger}, \hyperpage{11}
+  \item {run}
+    \subitem {Server}, \hyperpage{14}
+
+  \indexspace
+
+  \item {Server}, \hyperpage{13}
+    \subitem {authenticateClient}, \hyperpage{14}
+    \subitem {bindSocket}, \hyperpage{14}
+    \subitem {createSocket}, \hyperpage{14}
+    \subitem {handleClient}, \hyperpage{14}
+    \subitem {initialize}, \hyperpage{14}
+    \subitem {m\_port}, \hyperpage{15}
+    \subitem {m\_running}, \hyperpage{15}
+    \subitem {m\_serverSocket}, \hyperpage{15}
+    \subitem {m\_userDbFile}, \hyperpage{15}
+    \subitem {processVectors}, \hyperpage{14}
+    \subitem {run}, \hyperpage{14}
+    \subitem {Server}, \hyperpage{13}
+    \subitem {startListening}, \hyperpage{15}
+    \subitem {stop}, \hyperpage{15}
+  \item {SHA256}, \hyperpage{16}
+    \subitem {hash}, \hyperpage{16}
+  \item {src/AuthManager.cpp}, \hyperpage{19}
+  \item {src/AuthManager.h}, \hyperpage{19}, \hyperpage{21}
+  \item {src/Interface.cpp}, \hyperpage{21}
+  \item {src/Interface.h}, \hyperpage{21}, \hyperpage{23}
+  \item {src/Logger.cpp}, \hyperpage{23}
+  \item {src/Logger.h}, \hyperpage{23}, \hyperpage{25}
+  \item {src/main.cpp}, \hyperpage{25}
+  \item {src/Server.cpp}, \hyperpage{26}
+  \item {src/Server.h}, \hyperpage{26, 27}
+  \item {src/SHA256.cpp}, \hyperpage{28}
+  \item {src/SHA256.h}, \hyperpage{28, 29}
+  \item {src/VectorProcessor.cpp}, \hyperpage{29}
+  \item {src/VectorProcessor.h}, \hyperpage{30, 31}
+  \item {startListening}
+    \subitem {Server}, \hyperpage{15}
+  \item {stop}
+    \subitem {Server}, \hyperpage{15}
+
+  \indexspace
+
+  \item {VectorProcessor}, \hyperpage{16}
+    \subitem {computeProduct}, \hyperpage{16}
+  \item {vm}
+    \subitem {Interface}, \hyperpage{10}
+
+\end{theindex}
