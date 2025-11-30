@@ -1,13 +1,15 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic -pthread
-LDFLAGS = -lcrypto -lUnitTest++
+LDFLAGS = -lcrypto -lboost_program_options -lboost_system -lboost_filesystem
 SRCDIR = src
 TESTDIR = tests
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 TARGET = server
 TEST_TARGET = test_runner
-TEST_SOURCES = $(TESTDIR)/test_authmanager.cpp $(TESTDIR)/test_vectorprocessor.cpp $(TESTDIR)/test_sha256.cpp $(TESTDIR)/test_logger.cpp $(TESTDIR)/test_integration.cpp $(TESTDIR)/test_main.cpp
+
+# Используем wildcard для автоматического поиска всех тестовых файлов
+TEST_SOURCES = $(wildcard $(TESTDIR)/test_*.cpp)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
@@ -16,7 +18,7 @@ $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(TEST_TARGET): $(TEST_SOURCES) $(filter-out $(SRCDIR)/main.cpp, $(SOURCES))
-	$(CXX) $(CXXFLAGS) -I$(SRCDIR) -o $(TESTDIR)/$@ $(TEST_SOURCES) $(filter-out $(SRCDIR)/main.cpp, $(SOURCES)) $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -I$(SRCDIR) -o $(TESTDIR)/$@ $(TEST_SOURCES) $(filter-out $(SRCDIR)/main.cpp, $(SOURCES)) $(LDFLAGS) -lUnitTest++
 
 test: $(TEST_TARGET)
 	cd $(TESTDIR) && ./$(TEST_TARGET)
