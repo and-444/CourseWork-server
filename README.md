@@ -62,3 +62,19 @@ sudo apt install libboost-program-options-dev libboost-system-dev libboost-files
 make clean
 make test
 ```
+
+## Документирование
+Устанавливаем зависимости
+```bash
+sudo apt install doxygen graphviz latexmk texlive-latex-extra
+```
+
+Генерируем документацию
+```bash
+make doxygen
+```
+
+Или PDF
+```bash
+make pdf
+```
