@@ -51,9 +51,10 @@ make
 ```
 
 ## Модульное тестирование 
-Убедитесь, что установлена библиотека UnitTest++
+Убедитесь, что установлена библиотека UnitTest++ и Boost
 ```bash
 sudo apt install libunittest++-dev
+sudo apt install libboost-program-options-dev libboost-system-dev libboost-filesystem-dev
 ```
 
 Запуск тестов
