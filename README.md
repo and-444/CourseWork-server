@@ -63,6 +63,14 @@ make clean
 make test
 ```
 
+Запуск функциональных тестов
+```bash
+# Делаем скрипт исполняемым
+chmod +x tests/run_functional_tests.sh
+# Запускаем функциональные тесты
+make functional-test
+```
+
 ## Документирование
 Устанавливаем зависимости
 ```bash
